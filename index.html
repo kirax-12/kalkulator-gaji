@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Gaji Bersih — Take Home Pay + PPh 21 + BPJS</title>
+<meta name="description" content="Hitung gaji bersih (take home pay) dari gaji pokok: potongan BPJS Kesehatan, BPJS Ketenagakerjaan, dan PPh 21 berdasarkan status PTKP. Plus hitung pajak THR. Estimasi transparan dengan rincian tahunan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="tape" aria-hidden="true">
+  <div class="tape-track">
+    <span>Kalkulator Gaji · Take Home Pay · PPh 21 · BPJS · THR Bersih Berapa · </span>
+    <span>Kalkulator Gaji · Take Home Pay · PPh 21 · BPJS · THR Bersih Berapa · </span>
+  </div>
+</div>
+
+<header class="app-header">
+  <h1>Kalkulator <span class="hl">Gaji Bersih</span></h1>
+  <p class="app-sub">gaji pokok segini, yang masuk rekening berapa? ↓</p>
+</header>
+
+<main>
+  <section class="panel" aria-label="Data gaji">
+    <h2>Isi gajimu</h2>
+    <div class="field">
+      <label for="input-pokok">Gaji pokok per bulan (Rp)</label>
+      <input id="input-pokok" type="number" min="0" step="50000" value="10000000" inputmode="numeric">
+    </div>
+    <div class="field">
+      <label for="input-tunjangan">Tunjangan tetap per bulan (Rp)</label>
+      <input id="input-tunjangan" type="number" min="0" step="50000" value="0" inputmode="numeric">
+    </div>
+    <div class="field">
+      <label for="input-ptkp">Status PTKP</label>
+      <select id="input-ptkp">
+        <option value="54000000">TK/0 — lajang, tanpa tanggungan (54 jt)</option>
+        <option value="58500000">TK/1 — lajang, 1 tanggungan (58,5 jt)</option>
+        <option value="63000000">TK/2 — lajang, 2 tanggungan (63 jt)</option>
+        <option value="67500000">TK/3 — lajang, 3 tanggungan (67,5 jt)</option>
+        <option value="58500000">K/0 — kawin, tanpa tanggungan (58,5 jt)</option>
+        <option value="63000000">K/1 — kawin, 1 tanggungan (63 jt)</option>
+        <option value="67500000">K/2 — kawin, 2 tanggungan (67,5 jt)</option>
+        <option value="72000000">K/3 — kawin, 3 tanggungan (72 jt)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="input-thr">THR tahun ini (Rp, isi 0 kalau mau gaji saja)</label>
+      <input id="input-thr" type="number" min="0" step="50000" value="0" inputmode="numeric">
+    </div>
+    <label class="check"><input type="checkbox" id="input-bpjs-kes" checked> Potong BPJS Kesehatan (1% dari upah, maks. upah 12 jt)</label>
+    <label class="check"><input type="checkbox" id="input-bpjs-tk" checked> Potong BPJS Ketenagakerjaan — JHT 2% + JP 1%</label>
+    <p class="fineprint">Estimasi dengan metode tahunan (tarif Pasal 17), bukan metode TER bulanan — hasil akhir tahunnya setara, rincian per bulannya bisa sedikit berbeda dari slip gaji. Batas upah JP memakai angka 2025 (Rp10.547.400). Bukan pengganti konsultasi pajak.</p>
+  </section>
+
+  <section class="panel" aria-label="Hasil hitungan">
+    <p class="result-kicker">take home pay per bulan</p>
+    <p class="result-monthly" id="r-thp">—</p>
+    <p class="result-verdict" id="r-verdict">—</p>
+    <div class="result-facts" id="r-facts"></div>
+    <div class="table-wrap">
+      <table class="rincian" id="r-table"></table>
+    </div>
+    <p class="result-note" id="r-thr-note" hidden></p>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <p>Dibuat oleh Remike Dev · Kalkulator Gaji Bersih — dihitung lokal di browser.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
