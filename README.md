@@ -1,5 +1,7 @@
 # Kalkulator Gaji Bersih
 
+**Demo live:** [kalkulator-gaji di GitHub Pages](https://kirax-12.github.io/kalkulator-gaji/)
+
 Web app statis buat menghitung take home pay karyawan Indonesia dari gaji pokok: potongan BPJS Kesehatan, BPJS Ketenagakerjaan (JHT + JP), dan PPh 21 berdasarkan status PTKP — lengkap dengan rincian tahunan (biaya jabatan, neto, PKP, pajak setahun) dan perhitungan pajak THR.
 
 Dibuat oleh **Remike Dev**.
